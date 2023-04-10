@@ -1,12 +1,29 @@
 from django.urls import path,re_path
 
-from.views import *
+from .views import (
+    index,
+    about,
+    RegisterUser,
+    RegisterView,
+    LoginView,
+    register_view,
+    login_view
+)
 
 urlpatterns = [
     path('',index, name='home'),
-    path('cats/<int:catid>/',categories),
-    re_path(r'^archive/(?P<year>[0-9]{4})/',archive),
+
     path('about/' , about , name='about'),
-    path('login/',login, name='login'),
+
+    path('accounts/register/',RegisterUser.as_view(),name='register'),
+
+    path('secondregistr/',RegisterView.as_view(),name='secondregistr'),
+
+    path('secondlogin/',LoginView.as_view(),name='secondlogin'),
+
+    #function------------
+    path('funregister/', register_view, name='funregister'),
+    path('funlogin/', login_view, name='funlogin'),
+
 ]
 
